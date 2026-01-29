@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Samta - Wanderlust Travels</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        primary: '#0f766e',
+                        secondary: '#facc15',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur shadow-sm py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-gray-900 font-serif text-2xl font-bold tracking-tight">Wanderlust<span class="text-secondary">Travels</span></a>
+            <div class="hidden md:flex space-x-8 text-gray-900 font-medium">
+                <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+                <a href="index.html#experiences" class="hover:text-primary transition-colors">Experiences</a>
+                <a href="about.html" class="text-primary transition-colors">About</a>
+                <a href="mailto:hello@wanderlusttravels.com" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-all">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Content -->
+    <main class="pt-32 pb-24">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <!-- Image Section -->
+                <div class="w-full md:w-1/2 relative">
+                    <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Samta" class="w-full aspect-[4/5] object-cover">
+                    </div>
+                    <!-- Decorative element -->
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary rounded-full -z-10"></div>
+                    <div class="absolute -top-6 -left-6 w-48 h-48 bg-primary/10 rounded-3xl -z-10"></div>
+                </div>
+
+                <!-- Text Section -->
+                <div class="w-full md:w-1/2">
+                    <h4 class="text-primary font-bold tracking-widest uppercase text-sm mb-4">Meet the Explorer</h4>
+                    <h1 class="font-serif text-5xl md:text-6xl mb-8 leading-tight">I'm Samta.</h1>
+                    
+                    <div class="space-y-6 text-lg text-gray-600 leading-relaxed">
+                        <p>
+                            To me, traveling isn't just about visiting new coordinates on a map; it's about the <span class="text-primary font-semibold italic">electric thrill of the unknown</span>. I believe that every journey has a way of stretching the soul and reframing how we see the world.
+                        </p>
+                        <p>
+                            My excitement for exploration comes from the small, unscripted moments: the smell of pine in the Manali air, the golden reflection of a Jaipur palace at sunset, or the rhythmic sound of backwaters in Kerala. I'm driven by a deep curiosity to understand the heartbeat of different cultures and the stories etched into ancient landscapes.
+                        </p>
+                        <p>
+                            Through **Wanderlust Travels**, I want to share that spark of excitement with you. Whether it's the quiet solitude of a mountain peak or the vibrant chaos of a spice market, I believe travel is the ultimate catalyst for personal growth and joy.
+                        </p>
+                    </div>
+
+                    <div class="mt-10 flex gap-8">
+                        <div>
+                            <span class="block text-3xl font-bold text-gray-900">25+</span>
+                            <span class="text-sm text-gray-500 uppercase tracking-wider">Countries</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-bold text-gray-900">100+</span>
+                            <span class="text-sm text-gray-500 uppercase tracking-wider">Cities</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-bold text-gray-900">15</span>
+                            <span class="text-sm text-gray-500 uppercase tracking-wider">Expeditions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Insights Section -->
+    <section class="py-24 bg-primary text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl mb-4">Samta's Travel Insights</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                <div class="p-8 border border-white/20 rounded-3xl backdrop-blur-sm">
+                    <div class="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-6 text-secondary">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Travel to Learn</h3>
+                    <p class="text-teal-50">Every destination is a classroom. I find that learning a few local words or a traditional recipe opens doors that guidebooks never can.</p>
+                </div>
+                
+                <div class="p-8 border border-white/20 rounded-3xl backdrop-blur-sm">
+                    <div class="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-6 text-secondary">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Embrace Spontaneity</h3>
+                    <p class="text-teal-50">My best travel stories always start with a wrong turn. Don't be afraid to deviate from the itinerary—that's where the magic happens.</p>
+                </div>
+
+                <div class="p-8 border border-white/20 rounded-3xl backdrop-blur-sm">
+                    <div class="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-6 text-secondary">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Slow Travel</h3>
+                    <p class="text-teal-50">Instead of ticking off lists, I prefer sinking into a place. One week in one city is worth more than three days in three cities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <a href="index.html" class="text-white font-serif text-2xl font-bold tracking-tight mb-6 block">Wanderlust<span class="text-secondary">Travels</span></a>
+                <p>&copy; 2026 Wanderlust Travels. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

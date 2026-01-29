@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Travels - Travel Experiences</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        primary: '#0f766e', // Teal-700
+                        secondary: '#facc15', // Yellow-400
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .slideshow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .status-progress-bg {
+            height: 2px;
+            flex: 1;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .status-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: white;
+            transition: width linear;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 py-6" id="navbar">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-white font-serif text-2xl font-bold tracking-tight">Wanderlust<span class="text-secondary">Travels</span></a>
+            <div class="hidden md:flex space-x-8 text-white font-medium">
+                <a href="index.html" class="hover:text-secondary transition-colors">Home</a>
+                <a href="#experiences" class="hover:text-secondary transition-colors">Experiences</a>
+                <a href="about.html" class="hover:text-secondary transition-colors">About</a>
+                <a href="mailto:hello@wanderlusttravels.com" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-all">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center overflow-hidden">
+        <div class="slideshow-container">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1586500036706-41963de24d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+            <div class="slide" style="background-image: url('assets/lakshman-jhula.png')"></div>
+        </div>
+        <div class="container mx-auto px-6 text-center text-white relative z-10">
+            <h1 class="font-serif text-5xl md:text-7xl mb-6 leading-tight">Discover the Magic of <br><span class="text-secondary italic">Incredible Destinations</span></h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto font-light text-gray-100">From the serene backwaters of the South to the mist-covered mountains of the North.</p>
+            <a href="#experiences" class="bg-secondary text-gray-900 px-10 py-4 rounded-full font-bold text-lg hover:shadow-xl transform hover:-translate-y-1 transition-all inline-block">Explore Experiences</a>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </header>
+
+    <!-- Experiences Section -->
+    <section id="experiences" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl mb-4">Curated Experiences</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto"></div>
+                <p class="mt-6 text-gray-600 max-w-xl mx-auto text-lg">Handpicked destinations that capture the true essence of India's diverse landscape and culture.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Varkala -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 cursor-pointer" onclick="openStatus('varkala')">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Varkala Cliff" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase text-primary">Coastal Bliss</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl mb-3">Varkala</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-3">Famous for its dramatic red cliffs overlooking the Arabian Sea, Varkala offers a unique blend of spirituality and sun-drenched relaxation. The Papanasam beach is known for its holy waters.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center text-sm text-gray-500">
+                                <svg class="w-4 h-4 mr-1 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                4.8 (2.4k reviews)
+                            </span>
+                            <span class="text-primary font-bold hover:underline">View Status →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alleppey -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 cursor-pointer" onclick="openStatus('alleppey')">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586500036706-41963de24d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Alleppey Backwaters" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase text-primary">Backwaters</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl mb-3">Alleppey (Alappuzha)</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-3">The 'Venice of the East' is best experienced on a traditional houseboat. Navigate through emerald green lagoons, coconut groves, and witness the charming rural life of Kerala.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center text-sm text-gray-500">
+                                <svg class="w-4 h-4 mr-1 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                4.9 (3.1k reviews)
+                            </span>
+                            <span class="text-primary font-bold hover:underline">View Status →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hari Mahal Palace Jaipur -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 cursor-pointer" onclick="openStatus('jaipur')">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Hari Mahal Palace Jaipur" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase text-primary">Royal Heritage</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl mb-3">Hari Mahal Palace, Jaipur</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-3">Experience the grandeur of Rajputana at the Hari Mahal Palace. With its stunning architecture, lush gardens, and royal hospitality, it offers a glimpse into the opulent lifestyle of Jaipur's royalty.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center text-sm text-gray-500">
+                                <svg class="w-4 h-4 mr-1 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                4.9 (1.5k reviews)
+                            </span>
+                            <span class="text-primary font-bold hover:underline">View Status →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manali -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 cursor-pointer" onclick="openStatus('manali')">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Manali Mountains" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase text-primary">Mountain Retreat</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl mb-3">Manali</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-3">Nestled in the Beas River Valley, Manali is a gateway for adventure and tranquility. From snow-capped peaks at Solang Valley to the charming Old Manali streets, it's a paradise for every traveler.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center text-sm text-gray-500">
+                                <svg class="w-4 h-4 mr-1 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                4.9 (4.2k reviews)
+                            </span>
+                            <span class="text-primary font-bold hover:underline">View Status →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thekkady -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 cursor-pointer" onclick="openStatus('thekkady')">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Thekkady Wildlife" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase text-primary">Wildlife</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl mb-3">Thekkady</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-3">Home to the Periyar National Park, Thekkady is a haven for nature lovers. Explore spice plantations, enjoy bamboo rafting, and catch a glimpse of wild elephants by the lake.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center text-sm text-gray-500">
+                                <svg class="w-4 h-4 mr-1 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                4.7 (1.8k reviews)
+                            </span>
+                            <span class="text-primary font-bold hover:underline">View Status →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rishikesh -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 cursor-pointer" onclick="openStatus('rishikesh')">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="assets/lakshman-jhula.png" alt="Rishikesh Lakshman Jhula" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase text-primary">Solo Adventure</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl mb-3">Rishikesh</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-3">A soulful solo journey to the yoga capital of the world. Witness the majestic **Lakshman Jhula** suspended over the holy Ganges, and experience the vibrant community life staying in cozy, traveler-filled **hostel rooms**.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center text-sm text-gray-500">
+                                <svg class="w-4 h-4 mr-1 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                4.9 (2.1k reviews)
+                            </span>
+                            <span class="text-primary font-bold hover:underline">View Status →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Status Modal -->
+    <div id="statusModal" class="fixed inset-0 z-[100] hidden bg-black flex flex-col items-center justify-center">
+        <!-- Progress Bars -->
+        <div id="progressBarContainer" class="absolute top-4 left-4 right-4 flex gap-1 z-20">
+            <!-- Progress bars will be injected here -->
+        </div>
+        
+        <!-- Header -->
+        <div class="absolute top-10 left-4 right-4 flex justify-between items-center z-20">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center font-bold text-gray-900" id="statusIcon">S</div>
+                <div class="text-white">
+                    <h4 class="font-bold" id="statusPlaceName">Place Name</h4>
+                    <p class="text-xs text-gray-300">Just now</p>
+                </div>
+            </div>
+            <button id="closeStatus" class="text-white p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+
+        <!-- Image Container -->
+        <div class="relative w-full h-full flex items-center justify-center overflow-hidden">
+            <img id="statusImage" src="" class="max-w-full max-h-full object-contain transition-opacity duration-300 opacity-0" alt="Status">
+            
+            <!-- Navigation Areas -->
+            <div class="absolute inset-y-0 left-0 w-1/3 z-30" id="prevZone"></div>
+            <div class="absolute inset-y-0 right-0 w-2/3 z-30" id="nextZone"></div>
+        </div>
+    </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-primary text-white overflow-hidden relative">
+        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between">
+            <div class="mb-10 md:mb-0 max-w-xl">
+                <h2 class="font-serif text-4xl mb-6 leading-tight">Want to talk about travel?</h2>
+                <p class="text-gray-200 text-lg">I love sharing tips and hearing about other people's adventures. Feel free to reach out if you're planning a trip to any of these places!</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="mailto:hello@wanderlusttravels.com" class="bg-secondary text-gray-900 px-8 py-3 rounded-full font-bold hover:bg-yellow-300 transition-all text-center">Send me a Message</a>
+                <a href="about.html" class="border border-white/30 backdrop-blur px-8 py-3 rounded-full font-bold hover:bg-white/10 transition-all text-center">My Story</a>
+            </div>
+        </div>
+        <!-- Decorative shapes -->
+        <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-teal-600 rounded-full opacity-50"></div>
+        <div class="absolute -top-20 -right-20 w-80 h-80 bg-teal-800 rounded-full opacity-50"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="index.html" class="text-white font-serif text-2xl font-bold tracking-tight mb-6 block">Wanderlust<span class="text-secondary">Travels</span></a>
+                    <p class="max-w-sm mb-6">A personal collection of stories, photos, and insights from my journeys across India and beyond. Just a traveler sharing the joy of exploration.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                        <!-- More social icons could be added here -->
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="index.html#experiences" class="hover:text-white transition-colors">Experiences</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="mailto:hello@wanderlusttravels.com" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Contact Us</h4>
+                    <p class="mb-4">456 Heritage Way,<br>New Delhi, 110001</p>
+                    <p class="mb-4 text-white font-medium">hello@wanderlusttravels.com</p>
+                    <p>+91 98765 43210</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-sm flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2026 Wanderlust Travels. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/90', 'backdrop-blur', 'shadow-md', 'py-4');
+                navbar.classList.remove('py-6');
+                navbar.querySelectorAll('a, div').forEach(el => {
+                    if (el.classList.contains('text-white') && !el.classList.contains('bg-primary')) {
+                        el.classList.replace('text-white', 'text-gray-900');
+                    }
+                });
+            } else {
+                navbar.classList.remove('bg-white/90', 'backdrop-blur', 'shadow-md', 'py-4');
+                navbar.classList.add('py-6');
+                navbar.querySelectorAll('a, div').forEach(el => {
+                    if (el.classList.contains('text-gray-900')) {
+                        el.classList.replace('text-gray-900', 'text-white');
+                    }
+                });
+            }
+        });
+
+        // Hero Slideshow
+        const slides = document.querySelectorAll('.slide');
+        let currentHeroSlide = 0;
+
+        function nextHeroSlide() {
+            slides[currentHeroSlide].classList.remove('active');
+            currentHeroSlide = (currentHeroSlide + 1) % slides.length;
+            slides[currentHeroSlide].classList.add('active');
+        }
+
+        setInterval(nextHeroSlide, 5000); // Change image every 5 seconds
+
+        // Status Feature
+        const statusData = {
+            varkala: {
+                name: 'Varkala',
+                images: [
+                    'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+                    'https://images.unsplash.com/photo-1590514101604-dae340a6b72a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+                    'https://images.unsplash.com/photo-1596131397999-bb0153835003?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'
+                ]
+            },
+            alleppey: {
+                name: 'Alleppey',
+                images: [
+                    'https://images.unsplash.com/photo-1586500036706-41963de24d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+                    'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+                    'https://images.unsplash.com/photo-1544028043-46747530490b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'
+                ]
+            },
+            jaipur: {
+                name: 'Jaipur',
+                images: [
+                    'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+                    'https://images.unsplash.com/photo-1599661046289-e31887846eac?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+                    'https://images.unsplash.com/photo-1477587458883-47145ed94245?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'
+                ]
+            },
+            manali: {
+                name: 'Manali',
+                images: [
+                    'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+                    'https://images.unsplash.com/photo-1591154665854-01034311094d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+                    'https://images.unsplash.com/photo-1621539655554-34537b8307f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'
+                ]
+            },
+            thekkady: {
+                name: 'Thekkady',
+                images: [
+                    'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+                    'https://images.unsplash.com/photo-1588661605658-963d81b34336?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+                    'https://images.unsplash.com/photo-1593100126453-19b562a80028?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'
+                ]
+            },
+            rishikesh: {
+                name: 'Rishikesh',
+                images: [
+                    'assets/lakshman-jhula.png',
+                    'https://images.unsplash.com/photo-1545105511-92d63878709e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+                    'https://images.unsplash.com/photo-1614082242765-7c98ca0f3df3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'
+                ]
+            }
+        };
+
+        let currentStatusIndex = 0;
+        let statusInterval;
+        let currentPlace = null;
+        const statusDuration = 5000;
+
+        function openStatus(placeKey) {
+            currentPlace = statusData[placeKey];
+            currentStatusIndex = 0;
+            document.getElementById('statusModal').classList.remove('hidden');
+            document.getElementById('statusPlaceName').innerText = currentPlace.name;
+            document.getElementById('statusIcon').innerText = currentPlace.name[0];
+            
+            // Setup Progress Bars
+            const container = document.getElementById('progressBarContainer');
+            container.innerHTML = '';
+            currentPlace.images.forEach((_, i) => {
+                const bg = document.createElement('div');
+                bg.className = 'status-progress-bg';
+                const fill = document.createElement('div');
+                fill.className = 'status-progress-fill';
+                fill.id = `status-progress-${i}`;
+                bg.appendChild(fill);
+                container.appendChild(bg);
+            });
+
+            showStatusImage();
+            document.body.style.overflow = 'hidden'; // Prevent scroll
+        }
+
+        function showStatusImage() {
+            const img = document.getElementById('statusImage');
+            img.style.opacity = '0';
+            
+            // Clear previous intervals/animations
+            clearInterval(statusInterval);
+            resetProgressBars();
+
+            setTimeout(() => {
+                img.src = currentPlace.images[currentStatusIndex];
+                img.onload = () => {
+                    img.style.opacity = '1';
+                    startProgress(currentStatusIndex);
+                };
+            }, 300);
+        }
+
+        function startProgress(index) {
+            const fill = document.getElementById(`status-progress-${index}`);
+            fill.style.transition = 'none';
+            fill.style.width = '0%';
+            
+            // Force reflow
+            fill.offsetHeight;
+            
+            fill.style.transition = `width ${statusDuration}ms linear`;
+            fill.style.width = '100%';
+
+            statusInterval = setTimeout(() => {
+                nextStatus();
+            }, statusDuration);
+        }
+
+        function resetProgressBars() {
+            currentPlace.images.forEach((_, i) => {
+                const fill = document.getElementById(`status-progress-${i}`);
+                if (i < currentStatusIndex) {
+                    fill.style.transition = 'none';
+                    fill.style.width = '100%';
+                } else if (i > currentStatusIndex) {
+                    fill.style.transition = 'none';
+                    fill.style.width = '0%';
+                }
+            });
+        }
+
+        function nextStatus() {
+            if (currentStatusIndex < currentPlace.images.length - 1) {
+                currentStatusIndex++;
+                showStatusImage();
+            } else {
+                closeStatusModal();
+            }
+        }
+
+        function prevStatus() {
+            if (currentStatusIndex > 0) {
+                currentStatusIndex--;
+                showStatusImage();
+            } else {
+                currentStatusIndex = 0;
+                showStatusImage();
+            }
+        }
+
+        function closeStatusModal() {
+            document.getElementById('statusModal').classList.add('hidden');
+            clearInterval(statusInterval);
+            document.body.style.overflow = '';
+        }
+
+        // Event Listeners
+        document.getElementById('closeStatus').onclick = closeStatusModal;
+        document.getElementById('nextZone').onclick = (e) => {
+            e.stopPropagation();
+            nextStatus();
+        };
+        document.getElementById('prevZone').onclick = (e) => {
+            e.stopPropagation();
+            prevStatus();
+        };
+
+        // Close on Esc
+        window.onkeydown = (e) => {
+            if (e.key === 'Escape') closeStatusModal();
+        };
+    </script>
+</body>
+</html>
